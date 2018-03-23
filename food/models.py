@@ -18,7 +18,7 @@ class Hotel(models.Model):
     def delete_hotel(self):
         self.delete()
 
-    @classmethod(cls,search_term)
+    @classmethod
     def search_hotel(cls,search_term):
         hotel = cls.objects.filter(name__icontains=search_term)
         return hotel
@@ -46,7 +46,7 @@ class Food(models.Model):
         return food
 
 class Cart(models.Model):
-    items = models.CharField()
+    items = models.CharField(max_length=255)
     prices = models.PositiveIntegerField(default=0)
     user = models.ForeignKey(User)
     hotel = models.ForeignKey(Hotel)
