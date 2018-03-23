@@ -78,8 +78,10 @@ WSGI_APPLICATION = 'kibanda.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'kibanda',
+        'USER':'vicky',
+        'PASSWORD':'0716889165',
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=500)
