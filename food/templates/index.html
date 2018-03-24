@@ -3,5 +3,20 @@
 {% load static %}
 {% block content %}
 {{block.super}}
-<h1 class="text-center">{{test}}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3"></div>
+        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+        <div class="card card-default">
+        <div class="card-header">
+        <p>Hey {{current_user.username}}</p>
+        <p>Check out what we have today on out menu!!</p>
+        </div>
+        </div>
+        </div>
+        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3"></div>
+    </div>
+    <div class="row">
+    </div>
+</div>
 {% endblock %}

@@ -18,6 +18,11 @@ class Food(models.Model):
         self.delete()
 
     @classmethod
+    def get_food(cls):
+        food = cls.objects.all()
+        return food
+
+    @classmethod
     def search_food(cls,search_term):
         food = cls.objects.filter(name__icontains=search_term)
         return food
