@@ -1,4 +1,4 @@
-{% extends "food/base.html" %}
+{% extends "base.html" %}
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
@@ -15,30 +15,31 @@
         </tr>
     </thead>
     <tbody>
-        {% for item in cart %}
-        {% with  food=item.food %}
-        <tr>
-            <td>{{food.name}}</td>
-            <td>
-                {% if food.image_url %}
-                <img src="{{food.image_url.url}}" alt="{{food.name}}">
-                {% endif %}
-            </td>
-            <td>{{item.quantity}}</td>
-            <td><a href="{% url "cart:remove" food.id %}">Remove</a></td>
-            <td class="num">ksh {{item.price}}</td>
-            <td class="num">ksh {{item.total_price}}</td>
-        </tr>
-        {% endwith %}
-        {% endfor %}
-        <tr class="total">
-            <td>Total</td>
-            <td colspan="4"></td>
-            <td class="num">ksh {{cart.get_total_price}}</td>
-        </tr>
+            {% for item in Cart %}
+            {% with food=item.Food %}
+            <tr>
+                <td>{{food.name}}</td>
+                <td>
+                    {% if food.image_url %}
+                    <img src="{{food.image_url.url}}" alt="{{food.name}}">
+                    {% endif %}
+                </td>
+                <td>{{item.quantity}}</td>
+                <td><a href="{% url "remove" food.id %}">Remove</a></td>
+                <td class="num">ksh {{item.price}}</td>
+                <td class="num">ksh {{item.total_price}}</td>
+            </tr>
+            {% endwith %}
+            {% endfor %}
+            <tr class="total">
+                <td>Total</td>
+                <td colspan="4"></td>
+                <td class="num">ksh {{Cart.get_total_price}}</td>
+            </tr>
+
     </tbody>
 </table>
 <p class="text-right">
-    <a href="{% url "shop:index" %}" class="button-light">Continue</a>
+    <a href="{% url "index" %}" class="button-light">Continue</a>
 </p>
 {% endblock %}

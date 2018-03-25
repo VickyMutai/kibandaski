@@ -10,6 +10,12 @@
             <div class="col-md-6">
                 <h1 class="text-center">{{food.name}}</h1>
                 <p>{{food.description}}</p>
+                <p> ksh {{food.price}}</p>
+                <form action="{% url 'cart:add' food.id%}" method="post">
+                    {{cart_product_form}}
+                    {% csrf_token %}
+                    <input type="submit" value="Add to cart">
+                </form>
             </div>
         </div>
     </div>

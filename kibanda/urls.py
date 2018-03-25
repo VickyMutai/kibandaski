@@ -19,6 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^',include('food.urls')),
-    url(r'^cart/', include('cart.urls')),
+    url(r'^cart/', include('cart.urls', namespace="cart")),
     url(r'^accounts/',include('registration.backends.simple.urls')),
 ]
