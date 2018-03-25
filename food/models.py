@@ -2,11 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
 class Food(models.Model):
     name = models.CharField(max_length=30)
     price = models.PositiveIntegerField(default=0)
     image_url = models.ImageField(upload_to='food/')
-    available = models.PositiveIntegerField(default=0)
+    available = models.BooleanField(default=False)
+    category = models.ForeignKey(Category, null=True, blank=True)
 
     def __str__(self):
         return self.name

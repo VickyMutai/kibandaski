@@ -1,4 +1,4 @@
-from decimal import decimal
+from decimal import Decimal
 from django.conf import settings
 from food.models import Food
 
@@ -70,4 +70,4 @@ class Cart(object):
     def clear(self):
         #remove cart from session
         del self.session[settings.CART_SESSION_ID]
-            self.session.modified = True
+        self.session.modified = True
