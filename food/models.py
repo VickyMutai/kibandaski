@@ -8,7 +8,7 @@ class Category(models.Model):
 class Food(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=255)
-    image_url = models.ImageField(upload_to='food/')
+    image_url = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10,decimal_places=2)
     stock = models.PositiveIntegerField()
     available = models.BooleanField(default=True)
