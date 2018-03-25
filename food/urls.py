@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns=[
     url('^$',views.index,name='index'),
+    url(r'^food/(\d+)',views.food,name='food')
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

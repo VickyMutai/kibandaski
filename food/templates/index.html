@@ -13,6 +13,12 @@
         <p>Check out what we have today on out menu!!</p>
         </div>
         </div>
+        {% for foodie in food %}
+            {% if foodie.image_url %}
+                <img src="{{foodie.image_url}}" alt="" class="img-fluid">
+                <p><a href="{% url 'food' foodie.id%}">{{foodie.name}}</a></p>
+            {% endif %}
+        {% endfor %}
         </div>
         <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3"></div>
     </div>
