@@ -15,30 +15,29 @@
         </tr>
     </thead>
     <tbody>
-        {{cart.cart}}
-        {% for key,value in cart.cart.items %}
-        {% for food in foodie %}
-        <tr>
-        {% if fd == key %}
-        <td>{{food.name}}</td>
-        <td>
-            <img src="{{food.image_url}}" alt="" class="img-fluid"style="height:30%;width:90%;padding:7px;padding-left:10px"></td>              
-            <td>{{value.quantity}}</td>
-            <td><a href="{% url "cart:remove" food.id%}">Remove</a></td>
-            <td class="num">ksh. {{food.price}}</td>
-            <td class="num">ksh. {{cart.total_price}}</td>
-            {% endif %}
-       </tr>
-        {% endfor %}
-        {% endfor %}
-        <tr class="total">
-        <td>Total</td>
-        <td colspan="4"></td>
-        <td class="num">ksh{{ cart.get_total_price }}</td>
-        </tr>
+            {% for item in cart %}
+            {% with product=item.food %}
+            <tr>
+            <td>
+            <img src="{{product.image_url}}" class="img-fluid" style="height:30%;width:90%;padding:5px;padding-left:30px;">
+            </td>
+            <td>{{ product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td><a href="{% url "cart:remove" product.id
+           %}">Remove</a></td>
+            <td class="num">ksh. {{ item.price }}</td>
+            <td class="num">ksh. {{ item.total_price }}</td>
+            </tr>
+            {% endwith %}
+            {% endfor %}
+            <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">ksh. {{cart.get_total_price}}</td> 
     </tbody>
 </table>
 <p class="text-right">
-    <a href="{% url "index" %}" class="button-light">Continue</a>
+    <a href="{% url "index" %}" class="btn btn-primary">Continue</a>
+    <a href="#" class="btn btn-primary">Checkout</a>
 </p>
 {% endblock %}
