@@ -31,3 +31,9 @@ def cart_detail(request):
             'update': True})
     return render(request, 'cart/detail.html',{'cart':Cart,
                                                })
+
+def checkout(request):
+    Cart = cart(request)
+    current_user = request.user 
+    return render(request,'cart/checkout.html',{'cart':Cart,
+                                             'current_user':current_user})

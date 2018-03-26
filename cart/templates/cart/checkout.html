@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="row mt-5">
+            <div class="col-lg-4 col-md-4 col-sm-1 col-xs-1"></div>
+            <div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+                <div class="card card-primary">
+                    <div class="card-header"><h1>Receipt</h1></div>
+                    <div class="card-body">
+
+                    </div>
+                    <div class="card-footer">
+                            <h4>Thank you for coming today</h4>
+                            <h4>You were served by {{current_user.username}}</h4>  
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-1 col-xs-1"></div>
+        </div>
+    </div>
+{% endblock %}
