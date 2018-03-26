@@ -9,11 +9,29 @@
                 <div class="card card-primary">
                     <div class="card-header"><h1>Receipt</h1></div>
                     <div class="card-body">
-
+                        <table class="table-bordered">
+                            <thead>
+                                <tr style="padding:40px">
+                                <td>Quantity</td>
+                                <td>Name</td>
+                                <td>Price</td>
+                                </tr>
+                            </thead>
+                            {% for item in cart %}
+                            <tbody>
+                                <tr style="padding:40px">
+                                    <td>{{item.quantity}} x</td>
+                                    <td>{{item.food.name}}</td>
+                                    <td>ksh. {{item.total_price}}</td>
+                                    </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
                     </div>
+                    <p style="padding-left:30px">Total: ksh. {{ cart.get_total_price }}</p>
                     <div class="card-footer">
-                            <h4>Thank you for coming today</h4>
-                            <h4>You were served by {{current_user.username}}</h4>  
+                            <p>Thank you for coming today</p>
+                            <p>You were served by {{current_user.username}}</p>  
                     </div>
                 </div>
             </div>
