@@ -2,13 +2,15 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-    <div class="container">
-        <div class="row">
+    <div class="container mt-5">
+        <div class="row mt-5"></div>
+        <div class="row mt-5">
             <div class="col-md-6">
                 <img src="{{food.image_url}}" alt="" class="img-fluid">
             </div>
-            <div class="col-md-6">
-                <h1 class="text-center">{{food.name}}</h1>
+            <div class="col-md-2"></div>
+            <div class="col-md-4 mt-4">
+                <h1>{{food.name}}</h1>
                 <p>{{food.description}}</p>
                 <p> ksh {{food.price}}</p>
                 <form action="{% url 'cart:add' food.id%}" method="post">

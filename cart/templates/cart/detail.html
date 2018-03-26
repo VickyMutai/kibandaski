@@ -2,6 +2,11 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
+<div class="container">
+<div class="row mt-5"></div>
+<div class="row mt-3">
+<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
 <h1>Your shopping cart</h1>
 <table class="cart table-bordered">
     <thead>
@@ -19,7 +24,7 @@
             {% with product=item.food %}
             <tr>
             <td>
-            <img src="{{product.image_url}}" class="img-fluid" style="height:30%;width:90%;padding:5px;padding-left:30px;">
+            <img src="{{product.image_url}}" class="img-fluid" style="height:20%;width:90%">
             </td>
             <td>{{ product.name }}</td>
             <td>
@@ -30,8 +35,7 @@
                     {% csrf_token %}
                 </form>
             </td>
-            <td><a href="{% url "cart:remove" product.id
-           %}">Remove</a></td>
+            <td><a href="{% url "cart:remove" product.id %}">Remove</a></td>
             <td class="num">ksh. {{ item.price }}</td>
             <td class="num">ksh. {{ item.total_price }}</td>
             </tr>
@@ -45,6 +49,10 @@
 </table>
 <p class="text-right">
     <a href="{% url "index" %}" class="btn btn-primary">Continue</a>
-    <a href="#" class="btn btn-primary">Checkout</a>
+    <a href="{% url "cart:checkout" %}" class="btn btn-primary">Checkout</a>
 </p>
+</div>
+<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+</div>
+</div>
 {% endblock %}

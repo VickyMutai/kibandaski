@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 from food.models import Food
 from .cart import cart
 from .forms import CartAddProductForm
@@ -23,6 +24,7 @@ def cart_remove(request, food_id):
     Cart.remove(food)
     return redirect('cart:cart_detail')
 
+@login_required(login_url='/accounts/login/')
 def cart_detail(request):
     Cart = cart(request)
     for item in Cart:
@@ -32,6 +34,7 @@ def cart_detail(request):
     return render(request, 'cart/detail.html',{'cart':Cart,
                                                })
 
+@login_required(login_url='/accounts/login/')
 def checkout(request):
     Cart = cart(request)
     current_user = request.user 

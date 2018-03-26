@@ -2,8 +2,9 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<div class="container">
-    <div class="row">
+<div class="container mt-5">
+    <div class="row mt-5"></div>
+    <div class="row mt-5">
         <div class="col-md-4"></div>
         <div class="col-md-4">
             {% if form.errors %}
@@ -22,6 +23,7 @@
                         </div>
                         <input type="hidden" name="next" value="/">
                     </form>
+                    <p>Already have an account? <a href="/accounts/login/">Login here</a></p>
                 </div>
             </div>
         </div>

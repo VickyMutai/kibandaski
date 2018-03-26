@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
     <div class="container mt-5">
+        <div class="row mt-5"></div>
         <div class="row mt-5">
             <div class="col-lg-4 col-md-4 col-sm-1 col-xs-1"></div>
             <div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
@@ -31,7 +32,7 @@
                     <p style="padding-left:30px">Total: ksh. {{ cart.get_total_price }}</p>
                     <div class="card-footer">
                             <p>Thank you for coming today</p>
-                            <p>You were served by {{current_user.username}}</p>  
+                            <p>You were served by {{current_user.username | title}}</p>  
                     </div>
                 </div>
             </div>

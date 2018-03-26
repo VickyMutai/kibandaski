@@ -3,24 +3,26 @@
 {% load static %}
 {% block content %}
 {{block.super}}
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3"></div>
-        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
-        <div class="card card-default">
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="card card-default mt-5">
         <div class="card-header">
         <p>Hey {{current_user.username}}</p>
         <p>Check out what we have today on out menu!!</p>
         </div>
         </div>
+    </div>
+    <div class="row mt-5">
         {% for foodie in Food %}
             {% if foodie.image_url %}
-                <img src="{{foodie.image_url}}" alt="" class="img-fluid">
-                <p><a href="{% url 'food' foodie.id%}">{{foodie.name}}</a></p>
-            {% endif %}
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <img src="{{foodie.image_url}}" alt="" class="img-fluid" style="height:100%;width:80%;">
+                <p style="padding-left:5px"><a href="{% url 'food' foodie.id%}">{{foodie.name}}</a></p>
+            </div>
+                {% endif %}
         {% endfor %}
         </div>
-        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3"></div>
+        </div>
     </div>
     <div class="row">
     </div>

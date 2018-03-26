@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
+from django.contrib.auth.decorators import login_required
 from .models import Food,Category
 from cart.forms import CartAddProductForm
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def index(request):
     test = 'Working!!'
     current_user = request.user
@@ -12,6 +14,7 @@ def index(request):
                                         "current_user":current_user,
                                         "Food":food})
 
+@login_required(login_url='/accounts/login/')
 def food(request,food_id):
     try:
         food = Food.objects.get(id=food_id)
