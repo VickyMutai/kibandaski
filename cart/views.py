@@ -25,10 +25,9 @@ def cart_remove(request, food_id):
 
 def cart_detail(request):
     Cart = cart(request)
-    foodie = Food.get_food()
-    for food in foodie:
-        fd = str(food.id)
-        print(fd)
-    return render(request, 'cart/detail.html',{'foodie':foodie,
-                                               'cart':Cart,
-                                               'fd':fd,})
+    for item in Cart:
+        item['update_quantity_form'] = CartAddProductForm(
+            initial={'quantity': item['quantity'],
+            'update': True})
+    return render(request, 'cart/detail.html',{'cart':Cart,
+                                               })
