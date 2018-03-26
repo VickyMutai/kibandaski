@@ -2,7 +2,8 @@ from decimal import Decimal
 from django.conf import settings
 from food.models import Food
 
-class Cart(object):
+
+class cart(object):
     def __init__(self,request):
         """
         Initialize the cart
@@ -14,14 +15,14 @@ class Cart(object):
             cart = self.session[settings.CART_SESSION_ID]={}
         self.cart = cart
 
-    def add(self,Food,quantity=1,update_quantity=False):
+    def add(self,food,quantity=1,update_quantity=False):
         """
         Add product to cart or 
         """
-        food_id = str(Food.id)
+        food_id = str(food.id)
         if food_id not in self.cart:
             self.cart[food_id] = {'quantity':0,
-                                  'price':str(Food.price)}
+                                  'price':str(food.price)}
 
         if update_quantity:
             self.cart[food_id]['quantity'] = quantity
@@ -35,11 +36,11 @@ class Cart(object):
         #mark the session as modified to make sure it is saved
         self.session.modified = True
 
-    def remove(self, Food):
+    def remove(self, food):
         """
         Remove a product from the cart.
         """
-        food_id = str(Food.id)
+        food_id = str(food.id)
         if food_id in self.cart:
             del self.cart[food_id]
             self.save()
@@ -66,6 +67,8 @@ class Cart(object):
 
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+
+
 
     def clear(self):
         #remove cart from session
