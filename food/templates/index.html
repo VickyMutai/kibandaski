@@ -9,8 +9,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card card-default mt-5" style="margin-left:8%">
         <div class="card-header">
-        <p>Hey {{current_user.username}}</p>
-        <p>Check out what we have today on out menu!!</p>
+        <p>Hey {{current_user.username | title}}</p>
+        <p>Check out what we have on our menu today!!</p>
         </div>
         </div>
         </div>        
@@ -21,7 +21,7 @@
             {% if foodie.image_url %}
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <img src="{{foodie.image_url}}" alt="" class="img-fluid" style="height:100%;width:80%;">
-                <p style="padding-left:5px"><a href="{% url 'food' foodie.id%}">{{foodie.name}}</a></p>
+                <p style="padding-left:5px"><a href="{% url 'food' foodie.id%}" class="btn btn-default">{{foodie.name}}</a></p>
             </div>
                 {% endif %}
         {% endfor %}
